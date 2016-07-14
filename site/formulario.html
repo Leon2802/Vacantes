@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!--Links para bootstrap dialog-->
+	<link rel="stylesheet" href="/assets/css/bootstrap-dialog.min.css" />
+	<script src="/assets/js/bootstrap-dialog.min.js"></script>
+	<!--Aqui terminan los Links para bootstrap dialog-->
+	<title>Leonel</title>
+	<script type="text/javascript">
+		function valida(){
+			var forma = document.formita;
+			var er = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
+			var f1 = forma.fhcin.value;
+			var f2 = forma.fhcfin.value;
+			var d1 = f1.split("/");
+			var d2 = f2.split("/");
+			var fp =  d1[2]+d1[1]+d1[0];
+			var fc =  d2[2]+d2[1]+d2[0];
+			if (forma.nombre.value == "" || forma.fhcin.value == "" || forma.fhcfin.value == "" || forma.salario.value == "" || forma.desc.value == "") {
+				alert("Debe llenar todos los campos");
+				return false;
+			}else if (forma.fhcin.value.match(er) && forma.fhcfin.value.match(er)){
+					if (fp>fc) {
+						alert("La fecha de postulacion no puede ser mayor a la fecha de contratacion");
+						return false;
+					}else if (isNaN(forma.salario.value)) {
+						alert("El salario tiene que ser un valor numerico");
+						return false;
+					}else{
+						alert("Registro exitoso");
+					}
+				}else{
+					alert("El formato de la fecha debe ser el siguiente: dd/mm/aaaa");
+					return false;
+				}
+		}
+	</script>
+	<style type="text/css">
+		body {
+	     background-color:#E6E6E6;
+	   }
+	  html {
+	     background-image: url("por1.jpg");
+	   }
+ 	</style>
+</head>
+<body> 
+<div class="container">
+	<form name="formita" class="form-horizontal" name="formita">
+		<div class="form-group">
+			<div>
+				<h1>Registro de vacantes</h1>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">Nombre de la vacante:</label>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<input class="form-control" name="nombre" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">Fecha de postulacion:</label><!--Ingresar datos de la tabla vacantes-->
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<input class="form-control" type="text" name="fhcin" placeholder="dd/mm/aaaa">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">Fecha de contratacion:</label><!--Ingresar datos de la tabla vacantes-->
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<input class="form-control" type="text" name="fhcfin" placeholder="dd/mm/aaaa">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">Salario base:</label><!--Ingresar datos de la tabla vacantes-->
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<input class="form-control" type="text" name="salario" >
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-2">Descripcion de la vacante:</label><!--Ingresar datos de la tabla vacantes-->
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<textarea class="form-control" name="desc"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<input type="button" class="btn btn-primary" name="btn_registrar"value="Registrar" onclick="valida()"></input>
+			<input type="button" class="btn btn-primary"name="btn_mostrar" value="Mostrar"></input>
+		</div>
+	</form>
+</div>
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
